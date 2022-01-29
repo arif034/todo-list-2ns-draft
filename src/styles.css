@@ -51,17 +51,18 @@
 .list-container-wrapper {
   position: absolute;
   align-items: center;
-  width: 280px;
+  width: 320px;
   height: 400px;
   overflow: auto;
   background-color: rgba(0, 0, 200, 0.3);
-  transform: translate(50px, 50px);
+  transform: translate(30px, 50px);
   box-shadow: 3px 3px 2px 1px rgba(0, 0, 200, 0.4);
 }
 
 .list-item {
   position: relative;
   align-items: center;
+  text-overflow: center;
   background-color: rgba(0, 0, 200, 0.4);
   box-shadow: 3px 3px 2px 1px rgba(0, 0, 200, 0.5);
   margin-top: 10px;
@@ -73,11 +74,20 @@
 }
 
 .item-remove {
-  position: absolute;
-  background-color: rebeccapurple;
+  position: relative;
+  float: right;
+  background-color: rgba(0, 0, 200, 0.3);
   width: 20px;
   height: 20px;
   border-radius: 10px;
   border: none;
-  transform: translate(66px, 28px);
+  transform: translate(-10px, -60px);
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 200, 0.5);
+  transition: all 200ms linear;
+}
+
+.item-remove:hover {
+  width: 22px;
+  height: 22px;
+  border-radius: 11px;
 }

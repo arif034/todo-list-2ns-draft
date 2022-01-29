@@ -47,8 +47,10 @@ class ItemLists extends Component {
         <div className="list-container-wrapper">
           <div className="list-container">
             {this.state.itemList.map((element, index) => (
-              <div className="list-item" key={index}>
-                {element}
+              <div>
+                <div className="list-item" key={index}>
+                  {element}
+                </div>
                 <button
                   className="item-remove"
                   onClick={() => this.removeElement(index)}
