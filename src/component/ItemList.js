@@ -1,8 +1,8 @@
-import { useState } from "react";
-import Item from "./Item.js";
+import { useState, useEffect } from "react";
 function ItemList() {
   const [item, setItem] = useState("");
   const [itemList, setItemList] = useState([]);
+  const [listItem, setListItem] = useState([]);
   const onChange = (event) => {
     setItem(event.target.value);
   };
@@ -10,23 +10,24 @@ function ItemList() {
     setItemList([...itemList, item]);
     console.log(itemList);
   };
-
-  const removeElement = (index) => {
-    console.log(index);
-    //listItem.forEach((item) => console.log(item.key));
-    console.log(itemList[0]);
-  };
-  // const listItem = itemList.map((element, index) => (
-  //   <Item key={index} item={element} removeEle={() => removeElement(index)} />
-  // ));
-  const listItem = itemList.map((element, index) => (
-    <div className="list-item" key={index}>
-      {element}
-      <button className="item-remove" onClick={() => removeElement(index)}>
-        -
-      </button>
-    </div>
-  ));
+  useEffect(() => {
+    const removeElement = (index) => {
+      const newList = itemList;
+      console.log(newList.splice(index, 1));
+      console.log(newList);
+      setItemList(newList);
+      console.log(itemList);
+    };
+    const lis = itemList.map((element, index) => (
+      <div className="list-item" key={index}>
+        {element}
+        <button className="item-remove" onClick={() => removeElement(index)}>
+          -
+        </button>
+      </div>
+    ));
+    setListItem(lis);
+  }, [itemList]);
   return (
     <div>
       <input
