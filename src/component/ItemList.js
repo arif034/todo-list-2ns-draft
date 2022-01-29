@@ -8,17 +8,24 @@ function ItemList() {
   };
   const onSubmit = () => {
     setItemList([...itemList, item]);
+    console.log(itemList);
   };
 
-  function removeElement(item) {
-    setItemList(
-      itemList.filter(function (person) {
-        return person !== item;
-      })
-    );
-  }
-  const listItem = itemList.map((item, index) => (
-    <Item key={index} item={item} removeElement={removeElement} />
+  const removeElement = (index) => {
+    console.log(index);
+    //listItem.forEach((item) => console.log(item.key));
+    console.log(itemList[0]);
+  };
+  // const listItem = itemList.map((element, index) => (
+  //   <Item key={index} item={element} removeEle={() => removeElement(index)} />
+  // ));
+  const listItem = itemList.map((element, index) => (
+    <div className="list-item" key={index}>
+      {element}
+      <button className="item-remove" onClick={() => removeElement(index)}>
+        -
+      </button>
+    </div>
   ));
   return (
     <div>
