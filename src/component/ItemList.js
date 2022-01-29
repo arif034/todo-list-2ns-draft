@@ -35,6 +35,7 @@ class ItemLists extends Component {
     return (
       <div>
         <input
+          className="input-txt-area"
           type="text"
           value={this.state.item}
           placeholder="Write here..."
@@ -43,18 +44,20 @@ class ItemLists extends Component {
         <button className="submit-btn" onClick={this.onSubmit}>
           +
         </button>
-        <div className="list-container">
-          {this.state.itemList.map((element, index) => (
-            <div className="list-item" key={index}>
-              {element}
-              <button
-                className="item-remove"
-                onClick={() => this.removeElement(index)}
-              >
-                -
-              </button>
-            </div>
-          ))}
+        <div className="list-container-wrapper">
+          <div className="list-container">
+            {this.state.itemList.map((element, index) => (
+              <div className="list-item" key={index}>
+                {element}
+                <button
+                  className="item-remove"
+                  onClick={() => this.removeElement(index)}
+                >
+                  -
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

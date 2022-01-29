@@ -1,4 +1,83 @@
 .App {
+  width: 400px;
+  height: 550px;
   font-family: sans-serif;
   text-align: center;
+  background-color: rgba(0, 0, 200, 0.2);
+  transform: translate(450px, 5px);
+  align-items: center;
+}
+
+.input-txt-area {
+  position: absolute;
+  width: 150px;
+  height: 25px;
+  transform: translate(-120px, 5px);
+  border: none;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 255, 0.2);
+  transition: all 200ms linear;
+}
+
+.input-txt-area:hover {
+  width: 160px;
+  height: 27px;
+}
+
+.submit-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  transform: translate(50px, 5px);
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 255, 0.2);
+  transition: all 200ms linear;
+}
+
+.submit-btn:hover {
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+}
+
+.list-container {
+  position: relative;
+  background-color: transparent;
+  align-items: center;
+}
+
+.list-container-wrapper {
+  position: absolute;
+  align-items: center;
+  width: 280px;
+  height: 400px;
+  overflow: auto;
+  background-color: rgba(0, 0, 200, 0.3);
+  transform: translate(50px, 50px);
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 200, 0.4);
+}
+
+.list-item {
+  position: relative;
+  align-items: center;
+  background-color: rgba(0, 0, 200, 0.4);
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 200, 0.5);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 257px;
+  height: 80px;
+}
+
+.item-remove {
+  position: absolute;
+  background-color: rebeccapurple;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border: none;
+  transform: translate(66px, 28px);
 }
