@@ -1,47 +1,64 @@
-import { useState, useEffect } from "react";
-function ItemList() {
-  const [item, setItem] = useState("");
-  const [itemList, setItemList] = useState([]);
-  const [listItem, setListItem] = useState([]);
-  const onChange = (event) => {
-    setItem(event.target.value);
-  };
-  const onSubmit = () => {
-    setItemList([...itemList, item]);
-    console.log(itemList);
-  };
-  useEffect(() => {
-    const removeElement = (index) => {
-      const newList = itemList;
-      console.log(newList.splice(index, 1));
-      console.log(newList);
-      setItemList(newList);
-      console.log(itemList);
+import { Component } from "react";
+class ItemLists extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      item: "",
+      itemList: []
     };
-    const lis = itemList.map((element, index) => (
-      <div className="list-item" key={index}>
-        {element}
-        <button className="item-remove" onClick={() => removeElement(index)}>
-          -
+  }
+  onChange = (event) => {
+    this.setState(() => {
+      return { item: event.target.value };
+    });
+  };
+  onSubmit = () => {
+    console.log(this.state.item);
+    console.log(this.state.itemList);
+    this.setState(() => {
+      return { itemList: [...this.state.itemList, this.state.item] };
+    });
+  };
+
+  removeElement = (index) => {
+    const newList = this.state.itemList;
+    newList.splice(index, 1);
+    this.setState(() => {
+      return {
+        itemList: newList
+      };
+    });
+    console.log(this.state.itemList);
+  };
+
+  render() {
+    return (
+      <div>
+        <input
+          type="text"
+          value={this.state.item}
+          placeholder="Write here..."
+          onChange={this.onChange}
+        />
+        <button className="submit-btn" onClick={this.onSubmit}>
+          +
         </button>
+        <div className="list-container">
+          {this.state.itemList.map((element, index) => (
+            <div className="list-item" key={index}>
+              {element}
+              <button
+                className="item-remove"
+                onClick={() => this.removeElement(index)}
+              >
+                -
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    ));
-    setListItem(lis);
-  }, [itemList]);
-  return (
-    <div>
-      <input
-        type="text"
-        value={item}
-        placeholder="Write here..."
-        onChange={onChange}
-      />
-      <button className="submit-btn" onClick={onSubmit}>
-        +
-      </button>
-      <div className="list-container">{listItem}</div>
-    </div>
-  );
+    );
+  }
 }
 
-export default ItemList;
+export default ItemLists;
